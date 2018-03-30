@@ -1,0 +1,6 @@
+name: mruby-bctool
+description: BCTool class
+author: Yannick Koechlin
+website: https://github.com/yannick/mruby-bctool
+protocol: git
+repository: https://github.com/yannick/mruby-bctool.git
