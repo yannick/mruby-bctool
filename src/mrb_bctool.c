@@ -325,7 +325,7 @@ b_eval(mrb_state *mrb, mrb_value self)
 {
   char *s;
   mrb_int len;
-  mrb_value binding = mrb_nil_value();
+  mrb_value ret = mrb_nil_value();
   char *file = NULL;
   mrb_int line = 1;
   struct RProc *proc;
@@ -345,11 +345,9 @@ b_eval(mrb_state *mrb, mrb_value self)
   MRB_PROC_SET_TARGET_CLASS(proc, mrb->object_class);
 
   ai = mrb_gc_arena_save(mrb);
-  mrb_yield_with_class(mrb, mrb_obj_value(proc), 0, NULL, mrb_top_self(mrb), mrb->object_class);
+  ret = mrb_yield_with_class(mrb, mrb_obj_value(proc), 0, NULL, mrb_top_self(mrb), mrb->object_class);
   mrb_gc_arena_restore(mrb, ai);
-
- 
-  return mrb_nil_value();
+  return ret;
 }
 
 
